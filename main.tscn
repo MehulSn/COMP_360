@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8pkuaqsoylo7"]
+[gd_scene load_steps=15 format=3 uid="uid://b8pkuaqsoylo7"]
 
 [ext_resource type="Texture2D" uid="uid://bcd2c0gomgu25" path="res://MyNoiseTexture.tres" id="1_ig7tw"]
 [ext_resource type="Shader" uid="uid://ce8eql1x52rja" path="res://main.gdshader" id="2_0xm2m"]
+
+[sub_resource type="Environment" id="Environment_h2yge"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
 
@@ -24,8 +26,8 @@ size = Vector2(2, 2)
 albedo_texture = ExtResource("1_ig7tw")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
-subdivide_width = 16
-subdivide_depth = 16
+subdivide_width = 128
+subdivide_depth = 128
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 render_priority = 0
@@ -33,20 +35,28 @@ shader = ExtResource("2_0xm2m")
 shader_parameter/heightmap = ExtResource("1_ig7tw")
 shader_parameter/height_scale = 5.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
+albedo_color = Color(0.207843, 0.807843, 0.0980392, 1)
+uv1_scale = Vector3(4, 4, 4)
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+
 [node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 15)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 100)
+environment = SubResource("Environment_h2yge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_0xm2m")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2yge")
 
 [node name="Quad" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ig7tw")
 material_overlay = SubResource("StandardMaterial3D_0xm2m")
 mesh = SubResource("QuadMesh_lquwl")
@@ -55,3 +65,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_7mycd")
 [node name="TerrainPlane" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_h2yge")
 surface_material_override/0 = SubResource("ShaderMaterial_1bvp3")
+
+[node name="TerrainPlane2_Colour" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_h2yge")
+surface_material_override/0 = SubResource("StandardMaterial3D_lquwl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
