@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8pkuaqsoylo7"]
+[gd_scene load_steps=12 format=3 uid="uid://b8pkuaqsoylo7"]
 
 [ext_resource type="Texture2D" uid="uid://bcd2c0gomgu25" path="res://MyNoiseTexture.tres" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://ce8eql1x52rja" path="res://main.gdshader" id="2_0xm2m"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
 
@@ -22,10 +23,20 @@ size = Vector2(2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
 albedo_texture = ExtResource("1_ig7tw")
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
+subdivide_width = 16
+subdivide_depth = 16
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
+render_priority = 0
+shader = ExtResource("2_0xm2m")
+shader_parameter/heightmap = ExtResource("1_ig7tw")
+shader_parameter/height_scale = 5.0
+
 [node name="Main" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.7071068, -0.4055798, 0.579228, 0, 0.81915206, 0.57357645, -0.7071068, -0.4055798, 0.579228, 10, 10, 10)
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 10, 15)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 
@@ -40,3 +51,7 @@ material_override = SubResource("StandardMaterial3D_ig7tw")
 material_overlay = SubResource("StandardMaterial3D_0xm2m")
 mesh = SubResource("QuadMesh_lquwl")
 surface_material_override/0 = SubResource("StandardMaterial3D_7mycd")
+
+[node name="TerrainPlane" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_h2yge")
+surface_material_override/0 = SubResource("ShaderMaterial_1bvp3")
