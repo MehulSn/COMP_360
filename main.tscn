@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://b8pkuaqsoylo7"]
 
 [ext_resource type="Texture2D" uid="uid://bcd2c0gomgu25" path="res://MyNoiseTexture.tres" id="1_ig7tw"]
-[ext_resource type="Shader" uid="uid://ce8eql1x52rja" path="res://main.gdshader" id="2_0xm2m"]
+[ext_resource type="Shader" path="res://main.gdshader" id="2_0xm2m"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 
@@ -26,8 +26,8 @@ size = Vector2(2, 2)
 albedo_texture = ExtResource("1_ig7tw")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
-subdivide_width = 128
-subdivide_depth = 128
+subdivide_width = 256
+subdivide_depth = 256
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 render_priority = 0

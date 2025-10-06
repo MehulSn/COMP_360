@@ -4,6 +4,6 @@
 
 [resource]
 resource_local_to_scene = true
-width = 129
-height = 129
+width = 256
+height = 256
 noise = ExtResource("1_pi66h")
