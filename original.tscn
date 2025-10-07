@@ -1,22 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8pkuaqsoylo7"]
+[gd_scene load_steps=15 format=3 uid="uid://b06h4tcvekc78"]
 
-[ext_resource type="Texture2D" uid="uid://bcd2c0gomgu25" path="res://MyNoiseTexture.tres" id="1_ig7tw"]
-[ext_resource type="Shader" uid="uid://ce8eql1x52rja" path="res://main.gdshader" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bcd2c0gomgu25" path="res://MyNoiseTexture.tres" id="1_yexsr"]
+[ext_resource type="Shader" uid="uid://ce8eql1x52rja" path="res://main.gdshader" id="2_c7euw"]
 
 [sub_resource type="Environment" id="Environment_h2yge"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
-size = Vector2(20, 20)
-subdivide_width = 128
-subdivide_depth = 128
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2yge"]
+albedo_texture = ExtResource("1_yexsr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
-albedo_texture = ExtResource("1_ig7tw")
+albedo_texture = ExtResource("1_yexsr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm2m"]
-albedo_texture = ExtResource("1_ig7tw")
+albedo_texture = ExtResource("1_yexsr")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bvp3"]
 
@@ -25,7 +23,7 @@ material = SubResource("StandardMaterial3D_1bvp3")
 size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mycd"]
-albedo_texture = ExtResource("1_ig7tw")
+albedo_texture = ExtResource("1_yexsr")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h2yge"]
 subdivide_width = 256
@@ -33,9 +31,9 @@ subdivide_depth = 256
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1bvp3"]
 render_priority = 0
-shader = ExtResource("2_0xm2m")
-shader_parameter/heightmap = ExtResource("1_ig7tw")
-shader_parameter/height_scale = 0.1
+shader = ExtResource("2_c7euw")
+shader_parameter/heightmap = ExtResource("1_yexsr")
+shader_parameter/height_scale = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lquwl"]
 albedo_color = Color(0.207843, 0.807843, 0.0980392, 1)
@@ -50,7 +48,7 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 100
 environment = SubResource("Environment_h2yge")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+transform = Transform3D(0.7071068, -0.49999994, 0.5000001, 0, 0.70710695, 0.7071067, -0.7071068, -0.49999994, 0.5000001, 0, -0.019829988, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
